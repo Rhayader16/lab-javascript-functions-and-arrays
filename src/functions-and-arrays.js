@@ -13,7 +13,7 @@ const words = [
   "orchard",
   "crackpot",
 ];
-
+//
 function findLongestWord(words) {
   if (!words.length) {
     return null;
@@ -142,7 +142,18 @@ const wordsUnique = [
   "bring",
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+  if (!words.length) return null;
+  const uniqueWords = [];
+  for (let i = 0; i < words.length; i++) {
+    if (uniqueWords.indexOf(words[i]) === -1) {
+      if (!uniqueWords.includes(words[i], i + 1)) {
+        uniqueWords.push(words[i]);
+      }
+    }
+  }
+  return uniqueWords;
+}
 
 // Iteration #6: Find elements
 const wordsFind = [
@@ -156,7 +167,16 @@ const wordsFind = [
   "disobedience",
 ];
 
-function doesWordExist() {}
+function doesWordExist(words, parola) {
+  if (!words.length) return null;
+
+  let i = words.indexOf(parola);
+  if (i !== -1) {
+    if (words.indexOf(parola, i + 1) === -1) {
+      return true;
+    } else return false;
+  } else return false;
+}
 
 // Iteration #7: Count repetition
 const wordsCount = [
@@ -173,7 +193,16 @@ const wordsCount = [
   "matter",
 ];
 
-function howManyTimes() {}
+function howManyTimes(words, parola) {
+  if (!words.length) return 0;
+  let count = 0;
+  for (let i = 0; i < words.length; i++) {
+    if (parola === words[i]) {
+      count++;
+    }
+  }
+  return count;
+}
 
 // Iteration #8: Bonus
 const matrix = [
@@ -241,48 +270,57 @@ const matrix = [
   ],
 ];
 
-function greatestHorizontalOrVerticalProduct (matrix) {
-  let max = -Infinity
+//I couldn't finish this exercise before the class correction
 
-  for(let row = 0; row < matrix.length; row++) {
-    for ( let col = 0; col < matrix[row].length; col++) {
-      console.log(matrix[row][col])
+// function greatestHorizontalOrVerticalProduct(matrix) {
+//   let max = -Infinity;
 
-      const horizontalMax = matrix[row][col] *  matrix[row][col + 1] *  matrix[row][col +2] *  matrix[row][col +3]
-      console.log(horizontalMax)
-      if (horizontalMax > max) {
-        max = horizontalMax
+//   for (let row = 0; row < matrix.length; row++) {
+//     for (let col = 0; col < matrix[row].length; col++) {
+//       console.log(matrix[row][col]);
 
-        if (row < matrix.length - 3){
-        const verticalMax = matrix[row][col] *  matrix[row +1 ][col] *  matrix[row+2][col] *  matrix[row +3][col]
-      console.log(verticalMax)
-      if (verticalMax > max) {
-        max = verticalMax
-      }
-    }
-    }
-  }
-}
-greatestHorizontalOrVerticalProduct(matrix)
+//       const horizontalMax =
+//         matrix[row][col] *
+//         matrix[row][col + 1] *
+//         matrix[row][col + 2] *
+//         matrix[row][col + 3];
+//       console.log(horizontalMax);
+//       if (horizontalMax > max) {
+//         max = horizontalMax;
 
-function greatestProduct() {
+//         if (row < matrix.length - 3) {
+//           const verticalMax =
+//             matrix[row][col] *
+//             matrix[row + 1][col] *
+//             matrix[row + 2][col] *
+//             matrix[row + 3][col];
+//           console.log(verticalMax);
+//           if (verticalMax > max) {
+//             max = verticalMax;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+// greatestHorizontalOrVerticalProduct(matrix);
 
-}
+// function greatestProduct() {}
 
-// The following is required to make unit tests work.
-/* Environment setup. Do not modify the below code. */
-if (typeof module !== "undefined") {
-  module.exports = {
-    maxOfTwoNumbers,
-    findLongestWord,
-    sumNumbers,
-    sum,
-    averageNumbers,
-    averageWordLength,
-    avg,
-    uniquifyArray,
-    doesWordExist,
-    howManyTimes,
-    greatestProduct,
-  };
-}
+// // The following is required to make unit tests work.
+// /* Environment setup. Do not modify the below code. */
+// if (typeof module !== "undefined") {
+//   module.exports = {
+//     maxOfTwoNumbers,
+//     findLongestWord,
+//     sumNumbers,
+//     sum,
+//     averageNumbers,
+//     averageWordLength,
+//     avg,
+//     uniquifyArray,
+//     doesWordExist,
+//     howManyTimes,
+//     greatestProduct,
+//   };
+// }
